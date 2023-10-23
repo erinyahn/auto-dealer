@@ -2,10 +2,11 @@
 
 Team:
 
-* Person 1 - Which microservice?
-* Person 2 - Which microservice?
+* DANIEL GLASGOW: SALES
+* ERIN AHN: SERVICE
 
 ## Design
+BOOTSTRAP
 
 ## Service microservice
 
