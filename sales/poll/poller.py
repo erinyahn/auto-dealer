@@ -23,7 +23,7 @@ def poll(repeat=True):
             pass
         except Exception as e:
             print(e, file=sys.stderr)
-        
+
         if (not repeat):
             break
 

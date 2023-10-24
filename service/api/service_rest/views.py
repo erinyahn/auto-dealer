@@ -48,7 +48,7 @@ def api_technicians(request):
             {"technicians": technicians},
             encoder=TechnicianEncoder,
         )
-    else:
+    elif request.method == "POST":
         content = json.loads(request.body)
         technician = Technician.objects.create(**content)
         return JsonResponse(
@@ -98,27 +98,9 @@ def api_appointments(request):
         )
 
 
-@require_http_methods(["PUT", "DELETE"])
-def api_appointment(request, pk):
-    if request.method == "PUT":
-        content = json.loads(request.body)
-        if "status" in content:
-            status = content["status"]
-            if status in dict(Appointment.STATUS_CHOICES):
-                appointment = Appointment.objects.get(id=pk)
-                appointment.status = status
-                appointment.save()
-                return JsonResponse(
-                    appointment,
-                    encoder=AppointmentEncoder,
-                    safe=False
-                    )
-            else:
-                return JsonResponse(
-                    {"error": "Invalid status value. Choose from following: created, canceled, finished."},
-                    status=400
-                )
-    elif request.method == "DELETE":
+@require_http_methods(["DELETE"])
+def api_appointment_delete(request, pk):
+    if request.method == "DELETE":
         count, _ = Appointment.objects.filter(id=pk).delete()
         if count:
             return JsonResponse({"deleted": count > 0})
@@ -129,42 +111,38 @@ def api_appointment(request, pk):
             )
 
 
-# @require_http_methods(["PUT"])
-# def api_appointment_cancel(request,pk):
-#     if request.method == "PUT":
-#         content = json.loads(request.body)
-#         if "status" in content:
-#             status = content["status"]
-#             if status in dict(Appointment.STATUS_CHOICES) and status == "canceled":
-#                 appointment = Appointment.objects.get(id=pk)
-#                 appointment.status = status
-#                 appointment.save()
-#                 return JsonResponse({"message": "Appointment updated"})
-#             else:
-#                 return JsonResponse(
-#                     {"error": "Invalid status value. Change value to canceled"},
-#                     status=400
-#                 )
+@require_http_methods(["PUT"])
+def api_appointment_cancel(request, pk):
+    if request.method == "PUT":
+        appointment = Appointment.objects.get(id=pk)
+        appointment.status = "canceled"
+        appointment.save()
+        return JsonResponse(
+            appointment,
+            encoder=AppointmentEncoder,
+            safe=False
+        )
+    else:
+        return JsonResponse(
+            {"error": "Could not change value to canceled"},
+            status=400
+        )
 
 
 
-# @require_http_methods(["PUT"])
-# def api_appointment_finish(request,pk):
-#     if request.method == "PUT":
-#         content = json.loads(request.body)
-#         if "status" in content:
-#             status = content["status"]
-#             if status in dict(Appointment.STATUS_CHOICES) and status == "finished":
-#                 appointment = Appointment.objects.get(id=pk)
-#                 appointment.status = status
-#                 appointment.save()
-#                 return JsonResponse(
-#                     appointment,
-#                     encoder=AppointmentEncoder,
-#                     safe=False
-#                 )
-#             else:
-#                 return JsonResponse(
-#                     {"error": "Invalid status value. Change value to finished"},
-#                     status=400
-#                 )
+@require_http_methods(["PUT"])
+def api_appointment_finish(request,pk):
+    if request.method == "PUT":
+        appointment = Appointment.objects.get(id=pk)
+        appointment.status = "finished"
+        appointment.save()
+        return JsonResponse(
+            appointment,
+            encoder=AppointmentEncoder,
+            safe=False
+        )
+    else:
+        return JsonResponse(
+            {"error": "Could not change value to finished"},
+            status=400
+        )
