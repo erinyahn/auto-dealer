@@ -17,6 +17,7 @@ class AutomobileVOEncoder(ModelEncoder):
 class TechnicianEncoder(ModelEncoder):
     model = Technician
     properties = [
+        "id",
         "first_name",
         "last_name",
         "employee_id",
@@ -26,6 +27,7 @@ class TechnicianEncoder(ModelEncoder):
 class AppointmentEncoder(ModelEncoder):
     model = Appointment
     properties = [
+        "id",
         "date_time",
         "reason",
         "status",
@@ -34,7 +36,6 @@ class AppointmentEncoder(ModelEncoder):
         "technician",
     ]
     encoders = {
-        "vin": AutomobileVOEncoder(),
         "technician": TechnicianEncoder(),
     }
 
@@ -49,7 +50,7 @@ def api_technicians(request):
         )
     else:
         content = json.loads(request.body)
-        technician = JsonResponse.objects.create(**content)
+        technician = Technician.objects.create(**content)
         return JsonResponse(
             technician,
             encoder=TechnicianEncoder,
@@ -57,11 +58,17 @@ def api_technicians(request):
         )
 
 
-@require_http_methods(["DEL"])
+@require_http_methods(["DELETE"])
 def api_del_technician(request, pk):
-    if request.method == "DEL":
+    if request.method == "DELETE":
         count, _ = Technician.objects.filter(id=pk).delete()
-        return JsonResponse({"deleted": count > 0})
+        if count:
+            return JsonResponse({"deleted": count > 0})
+        else:
+            return JsonResponse(
+                {"deleted": count > 0},
+                status=400
+            )
 
 
 @require_http_methods(["GET", "POST"])
@@ -74,7 +81,16 @@ def api_appointments(request):
         )
     elif request.method == "POST":
         content = json.loads(request.body)
-        appointment = JsonResponse.objects.create(**content)
+        try:
+            tech_id = content["technician"]
+            technician = Technician.objects.get(employee_id=tech_id)
+            content["technician"] = technician
+        except Technician.DoesNotExist:
+            return JsonResponse(
+                {"message": "Invalid Technician employee ID"},
+                status=400
+            )
+        appointment = Appointment.objects.create(**content)
         return JsonResponse(
             appointment,
             encoder=AppointmentEncoder,
@@ -92,7 +108,11 @@ def api_appointment(request, pk):
                 appointment = Appointment.objects.get(id=pk)
                 appointment.status = status
                 appointment.save()
-                return JsonResponse({"message": "Appointment updated"})
+                return JsonResponse(
+                    appointment,
+                    encoder=AppointmentEncoder,
+                    safe=False
+                    )
             else:
                 return JsonResponse(
                     {"error": "Invalid status value. Choose from following: created, canceled, finished."},
@@ -100,5 +120,51 @@ def api_appointment(request, pk):
                 )
     elif request.method == "DELETE":
         count, _ = Appointment.objects.filter(id=pk).delete()
-        return JsonResponse({"deleted": count > 0})
-    
+        if count:
+            return JsonResponse({"deleted": count > 0})
+        else:
+            return JsonResponse(
+                {"deleted": count > 0},
+                status=400
+            )
+
+
+# @require_http_methods(["PUT"])
+# def api_appointment_cancel(request,pk):
+#     if request.method == "PUT":
+#         content = json.loads(request.body)
+#         if "status" in content:
+#             status = content["status"]
+#             if status in dict(Appointment.STATUS_CHOICES) and status == "canceled":
+#                 appointment = Appointment.objects.get(id=pk)
+#                 appointment.status = status
+#                 appointment.save()
+#                 return JsonResponse({"message": "Appointment updated"})
+#             else:
+#                 return JsonResponse(
+#                     {"error": "Invalid status value. Change value to canceled"},
+#                     status=400
+#                 )
+
+
+
+# @require_http_methods(["PUT"])
+# def api_appointment_finish(request,pk):
+#     if request.method == "PUT":
+#         content = json.loads(request.body)
+#         if "status" in content:
+#             status = content["status"]
+#             if status in dict(Appointment.STATUS_CHOICES) and status == "finished":
+#                 appointment = Appointment.objects.get(id=pk)
+#                 appointment.status = status
+#                 appointment.save()
+#                 return JsonResponse(
+#                     appointment,
+#                     encoder=AppointmentEncoder,
+#                     safe=False
+#                 )
+#             else:
+#                 return JsonResponse(
+#                     {"error": "Invalid status value. Change value to finished"},
+#                     status=400
+#                 )

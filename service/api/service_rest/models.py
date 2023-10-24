@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class AutomobileVO(models.Model):
@@ -15,7 +16,7 @@ class Technician(models.Model):
     employee_id = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
-        return f"{self.first_name} {self.lastname}"
+        return f"{self.first_name} {self.last_name}"
 
 
 class Appointment(models.Model):
@@ -36,7 +37,7 @@ class Appointment(models.Model):
     )
 
     def __str__(self):
-        return self.date_time
+        return self.customer
 
     def get_api_url(self):
-        return reverse("api_appointment", kwargs={"pk": self.pk})
+        return reverse("api_appointments", kwargs={"pk": self.pk})
