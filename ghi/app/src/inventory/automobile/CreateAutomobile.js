@@ -59,8 +59,6 @@ function CreateAutomobile() {
         })
     }
 
-    console.log(formData)
-
     return (
         <div className="row">
             <div className="offset-3 col-6">

@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 const initialFormData = {
     date_time: '',
     reason: '',
-    status: '',
     vin: '',
     customer: '', 
     technician: ''
@@ -47,8 +46,7 @@ function CreateAppointmentForm() {
 
         const updatedFormData = {
             ...formData,
-            date_time: dateTime,
-            status: "created"
+            date_time: dateTime
         }
 
         const appointmentUrl = 'http://localhost:8080/api/appointments/';

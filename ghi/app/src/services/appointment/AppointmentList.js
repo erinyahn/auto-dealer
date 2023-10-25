@@ -14,7 +14,7 @@ function AppointmentList (props) {
     async function loadAutomobiles() {
         const urlAuto = await fetch('http://localhost:8100/api/automobiles/')
         const responseAuto = await urlAuto.json();
-        const vins = responseAuto.autos.map(auto => auto.vin)
+        const vins = responseAuto.autos.map(auto => auto.vin.toUpperCase())
         setVinArray(vins)
         }
 
@@ -33,6 +33,7 @@ function AppointmentList (props) {
         })
         if (response.ok) {
             alert("Successfully Canceled!")
+            setAppointments(appointments.filter((appointments) => appointments.id != id))
         } else {
             alert("Couldn't change status to Canceled. Try again.")
         }
@@ -44,6 +45,7 @@ function AppointmentList (props) {
         })
         if (response.ok) {
             alert("Successfully Finished!")
+            setAppointments(appointments.filter((appointments) => appointments.id != id))
         } else {
             alert("Couldn't change status to Finished. Try again.")
         }
@@ -65,7 +67,9 @@ function AppointmentList (props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {appointments?.map(appointment => {
+                    {appointments
+                    .filter(appointment => appointment.status === "created")
+                    ?.map(appointment => {
                         return (
                             <tr key={appointment.id}>
                                 <td>{appointment.vin}</td>
