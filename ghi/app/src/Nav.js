@@ -10,6 +10,44 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li>
+            <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
+            </li>
+
+            <li>
+            <NavLink className="nav-link" aria-current="page" to="/manufacturers/">Manufacturers</NavLink>
+            </li>
+            <li>
+            <NavLink className="nav-link" aria-current="page" to="/manufacturers/create/">Create a Manufacturer</NavLink>
+            </li>
+            <li>
+            <NavLink className="nav-link" aria-current="page" to="/models/">Models</NavLink>
+            </li>
+            <li>
+            <NavLink className="nav-link" aria-current="page" to="/models/create/">Create a Model</NavLink>
+            </li>
+            <li>
+            <NavLink className="nav-link" aria-current="page" to="/automobiles/">Automobiles</NavLink>
+            </li>
+            <li>
+            <NavLink className="nav-link" aria-current="page" to="/automobiles/create/">Create an Automobile</NavLink>
+            </li>
+          
+            <li>
+            <NavLink className="nav-link" aria-current="page" to="/technicians/">Technicians</NavLink>
+            </li>
+            <li>
+            <NavLink className="nav-link" aria-current="page" to="/technicians/new/">Add a technician</NavLink>
+            </li>
+            <li>
+            <NavLink className="nav-link" aria-current="page" to="/appointment/">Service Appointments</NavLink>
+            </li>
+            <li>
+            <NavLink className="nav-link" aria-current="page" to="/appointment/new/">Create a Service Appointment</NavLink>
+            </li>
+            <li>
+            <NavLink className="nav-link" aria-current="page" to="/history/service/">Service History</NavLink>
+            </li>
           </ul>
         </div>
       </div>

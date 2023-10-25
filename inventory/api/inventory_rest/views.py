@@ -179,7 +179,7 @@ def api_vehicle_models(request):
             response = JsonResponse(
                 {"message": "Could not create the vehicle model"}
             )
-            response.status_code = 400
+            response.status_coe = 400
             return response
 
 

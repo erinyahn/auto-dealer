@@ -131,7 +131,7 @@ def api_appointment_cancel(request, pk):
 
 
 @require_http_methods(["PUT"])
-def api_appointment_finish(request,pk):
+def api_appointment_finish(request, pk):
     if request.method == "PUT":
         appointment = Appointment.objects.get(id=pk)
         appointment.status = "finished"
