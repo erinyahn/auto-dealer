@@ -15,7 +15,7 @@ function AutomobileInventory (props) {
     async function loadApptmts() {
         const urlApptmt = await fetch('http://localhost:8080/api/appointments/')
         const responseApptmt = await urlApptmt.json();
-        const vins = responseApptmt.appointments.map(appointment => appointment.vin)
+        const vins = responseApptmt.appointments.map(appointment => appointment.vin.toUpperCase())
         setVinsApptmts(vins)
     }
 
@@ -30,11 +30,11 @@ function AutomobileInventory (props) {
     }
 
     function isSoldApptmts(automobile) {
-        return vinsApptmts.includes(automobile.vin);
+        return vinsApptmts.includes(automobile.vin.toUpperCase());
     }
 
     // function isSoldSales(automobile) {
-    //     return vinsSales.includes(automobile.vin)
+    //     return vinsSales.includes(automobile.vin.toUpperCase())
     // }
 
 

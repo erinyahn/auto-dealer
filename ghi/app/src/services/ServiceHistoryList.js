@@ -6,6 +6,7 @@ function ServiceHistoryList (props) {
     const [vinArray, setVinArray] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
+    const [vinNotFound, setVinNotFound] = useState(false);
 
     async function loadData() {
         const request = await fetch('http://localhost:8080/api/appointments/')
@@ -16,9 +17,9 @@ function ServiceHistoryList (props) {
     async function loadAutomobiles() {
         const urlAuto = await fetch('http://localhost:8100/api/automobiles/')
         const responseAuto = await urlAuto.json();
-        const vins = responseAuto.autos.map(auto => auto.vin)
+        const vins = responseAuto.autos.map(auto => auto.vin.toUpperCase())
         setVinArray(vins)
-        }
+    }
 
     useEffect(() => {
         loadAutomobiles();
@@ -26,24 +27,28 @@ function ServiceHistoryList (props) {
     }, []);
     
     function isVIP(appointment) {
-        return vinArray.includes(appointment.vin)
+        return vinArray.includes(appointment.vin.toUpperCase())
     }
 
     function handleSearch() {
         const filteredAppointments = appointments.filter(appointment =>
-            appointment.vin.toUpperCase().includes(searchTerm.toUpperCase())
+            appointment.vin.toUpperCase() === searchTerm.toUpperCase()
         );
+        if (filteredAppointments.length === 0) {
+            setVinNotFound(true);
+        } else {
+            setVinNotFound(false);
+        }
         setSearchResults(filteredAppointments);
     }
-
-    
 
     return (
         <div>
             <h1>Service History</h1>
 
             <div className="input-group">
-                <input type="search" 
+                <input 
+                type="search" 
                 className="form-control rounded" 
                 placeholder="Search by VIN..." 
                 aria-label="Search" 
@@ -51,8 +56,19 @@ function ServiceHistoryList (props) {
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
             />
-                <button type="button" className="btn btn-outline-secondary" onClick={handleSearch}>Search</button>
+                <button 
+                type="button" 
+                className="btn btn-outline-secondary" 
+                onClick={handleSearch}>
+                    Search
+                </button>
             </div>
+
+            {vinNotFound && (
+                <div className="alert alert-danger" role="alert">
+                    VIN does not exist.
+                </div>
+            )}
 
             <table className="table table-striped">
                 <thead>
@@ -70,7 +86,7 @@ function ServiceHistoryList (props) {
                 <tbody>
                     {(searchResults.length > 0 ? searchResults : appointments).map(appointment => (
                         <tr key={appointment.id}>
-                            <td>{appointment.vin}</td>
+                            <td>{appointment.vin.toUpperCase()}</td>
                             <td>{isVIP(appointment) ? 'Yes' : 'No'}</td>
                             <td>{appointment.customer}</td>
                             <td>{new Date(appointment.date_time).toLocaleDateString()}</td>

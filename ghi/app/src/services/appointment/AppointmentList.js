@@ -24,7 +24,7 @@ function AppointmentList (props) {
     }, []);
     
     function isVIP(appointment) {
-        return vinArray.includes(appointment.vin)
+        return vinArray.includes(appointment.vin.toUpperCase())
     }
 
     async function handleCancel(id) {
@@ -72,7 +72,7 @@ function AppointmentList (props) {
                     ?.map(appointment => {
                         return (
                             <tr key={appointment.id}>
-                                <td>{appointment.vin}</td>
+                                <td>{appointment.vin.toUpperCase()}</td>
                                 <td>{isVIP(appointment)? "Yes":"No"}</td>
                                 <td>{appointment.customer}</td>
                                 <td>{new Date(appointment.date_time).toLocaleDateString()}</td>

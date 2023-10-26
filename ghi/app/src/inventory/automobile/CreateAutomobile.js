@@ -12,7 +12,6 @@ function CreateAutomobile() {
     const [formData, setFormData] = useState(
         initialFormData        
     )
-
     const [models, setModels] = useState([])
 
     const fetchData = async() => {
@@ -49,7 +48,7 @@ function CreateAutomobile() {
     }
 
     const handleFormChange = (e) => {
-        const value = e.target.value;
+        const value = e.target.value === 'vin' ? e.target.value.toUpperCase() : e.target.value
         const inputName = e.target.name;
 
 

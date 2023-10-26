@@ -1,11 +1,11 @@
 # CarCar
 
 Team:
-
-* Person 1 - Which microservice?
-* Person 2 - Which microservice?
+* Daniel Glasgow: Sales Microservice
+* Erin Ahn: Service Microservices
 
 ## Design
+BOOTSTRAP
 
 ## Service microservice
 
