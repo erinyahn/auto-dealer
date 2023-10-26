@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import Nav from './Nav';
-<<<<<<< HEAD
 import SalespersonForm from './sales/SalespersonForm';
 import SalespersonList from './sales/SalespersonList';
 import CustomerList from './sales/CustomerList';
@@ -9,7 +8,6 @@ import CustomerForm from './sales/CustomerForm';
 import SalesForm from './sales/SalesForm';
 import SalesList from './sales/SalesList';
 import SalespersonHistory from './sales/SalespersonHistory';
-=======
 import CreateTechnicianForm from './services/technicians/CreateTechnicianForm';
 import TechnicianList from './services/technicians/TechnicianList';
 import AppointmentList from './services/appointment/AppointmentList';
@@ -21,7 +19,6 @@ import VehicleModelList from './inventory/vehicle/VehicleModelList'
 import CreateVehicleModel from './inventory/vehicle/CreateVehicleModel'
 import AutomobileInventory from './inventory/automobile/AutomobileInventory'
 import CreateAutomobile from './inventory/automobile/CreateAutomobile'
->>>>>>> service
 
 function App() {
   return (
@@ -31,7 +28,6 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
 
-<<<<<<< HEAD
           <Route path="salespeople">
             <Route path="" element={<SalespersonList/>} />
             <Route path="new" element={<SalespersonForm/>} />
@@ -47,7 +43,6 @@ function App() {
             <Route path="new" element={<SalesForm/>} />
             <Route path="history" element={<SalespersonHistory/>} />
           </Route>
-=======
           <Route path="manufacturers">
             <Route path="" element={<ManufacturerList />} />
             <Route path="create" element={<CreateManufacturer />} />
@@ -77,7 +72,6 @@ function App() {
             <Route path="service" element={<ServiceHistoryList/>}/>
           </Route>
 
->>>>>>> service
         </Routes>
       </div>
     </BrowserRouter>

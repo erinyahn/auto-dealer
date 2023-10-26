@@ -64,7 +64,7 @@ function AutomobileInventory (props) {
                                 <td>{automobile.year}</td>
                                 <td>{automobile.vin.toUpperCase()}</td>
                                 <td>{automobile.model.name}</td>
-                                <td>{isSoldApptmts(automobile) && isSoldSales(automobile)? "Yes" : "No"}</td>
+                                <td>{isSoldApptmts(automobile)||isSoldSales(automobile)? "Yes" : "No"}</td>
                             </tr>
                         );
                     })}
