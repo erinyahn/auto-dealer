@@ -48,10 +48,11 @@ function ServiceHistoryList (props) {
 
             <div className="input-group">
                 <input 
+                name="search"
                 type="search" 
                 className="form-control rounded" 
                 placeholder="Search by VIN..." 
-                aria-label="Search" 
+                aria-label htmlFor="Search" 
                 aria-describedby="search-addon" 
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}

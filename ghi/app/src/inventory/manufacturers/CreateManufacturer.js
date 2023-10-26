@@ -43,9 +43,16 @@ function CreateManufacturer() {
             <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
                     <h1>Create a Manufacturer</h1>
-                    <form onSubmit={handleSubmit} id="create-technician-form">
+                    <form onSubmit={handleSubmit} id="create-manufacturer-form">
                         <div className="form-floating mb-3">
-                            <input value={formData.name} onChange={handleFormChange} placeholder="Name" required type="text" name="name" id="name" className="form-control" />
+                            <input name="name" 
+                            value={formData.name} 
+                            onChange={handleFormChange} 
+                            placeholder="Name" 
+                            required type="text" 
+                            id="name" 
+                            className="form-control" 
+                            />
                             <label htmlFor="name">Name</label>
                         </div>
                         <button className="btn btn-primary">Create</button>

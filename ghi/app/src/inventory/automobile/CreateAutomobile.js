@@ -48,7 +48,7 @@ function CreateAutomobile() {
     }
 
     const handleFormChange = (e) => {
-        const value = e.target.value === 'vin' ? e.target.value.toUpperCase() : e.target.value
+        const value = e.target.name === 'vin' ? e.target.value.toUpperCase() : e.target.value
         const inputName = e.target.name;
 
 
@@ -63,7 +63,7 @@ function CreateAutomobile() {
             <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
                     <h1>Create an Automobile</h1>
-                    <form onSubmit={handleSubmit} id="create-shoe-form">
+                    <form onSubmit={handleSubmit} id="create-automobile-form">
                         <div className="form-floating mb-3">
                             <input value={formData.color} onChange={handleFormChange} placeholder="Color" required type="text" name="color" id="color" className="form-control" />
                             <label htmlFor="color">Color</label>

@@ -48,7 +48,7 @@ function TechnicianForm() {
                     <form onSubmit={handleSubmit} id="create-technician-form">
                         <div className="form-floating mb-3">
                             <input value={formData.first_name} onChange={handleFormChange} placeholder="First name" required type="text" name="first_name" id="first_name" className="form-control" />
-                            <label htmlFor="name">First name</label>
+                            <label htmlFor="first_name">First name</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input value={formData.last_name} onChange={handleFormChange} placeholder="Last name" required type="text" name="last_name" id="last_name" className="form-control" />

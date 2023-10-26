@@ -44,30 +44,33 @@ function AutomobileInventory (props) {
     }, []);
 
     return(
-        <table className="table table-striped">
-        <thead>
-            <tr>
-                <th>Color</th>
-                <th>Year</th>
-                <th>Vin</th>
-                <th>Model</th>
-                <th>Sold</th>
-            </tr>
-        </thead>
-        <tbody>
-            {autos?.map(automobile => {
-                return (
-                    <tr key={automobile.id}>
-                        <td>{automobile.color}</td>
-                        <td>{automobile.year}</td>
-                        <td>{automobile.vin.toUpperCase()}</td>
-                        <td>{automobile.model.name}</td>
-                        <td>{isSoldApptmts(automobile)? "Yes":"No"}</td>
+        <div>
+            <h1>Automobiles</h1>
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Color</th>
+                        <th>Year</th>
+                        <th>Vin</th>
+                        <th>Model</th>
+                        <th>Sold</th>
                     </tr>
-                );
-            })}
-        </tbody>
-    </table>
+                </thead>
+                <tbody>
+                    {autos?.map(automobile => {
+                        return (
+                            <tr key={automobile.id}>
+                                <td>{automobile.color}</td>
+                                <td>{automobile.year}</td>
+                                <td>{automobile.vin.toUpperCase()}</td>
+                                <td>{automobile.model.name}</td>
+                                <td>{isSoldApptmts(automobile) ? "Yes" : "No"}</td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
+        </div>
     );
 }
 
