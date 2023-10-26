@@ -33,13 +33,23 @@ function ServiceHistoryList (props) {
     function handleSearch() {
         const filteredAppointments = appointments.filter(appointment =>
             appointment.vin.toUpperCase() === searchTerm.toUpperCase()
-        );
+        )
         if (filteredAppointments.length === 0) {
-            setVinNotFound(true);
+            setVinNotFound(true)
+            setTimeout(() => {
+                setVinNotFound(false);
+            }, 1000)
         } else {
-            setVinNotFound(false);
+            setVinNotFound(false)
         }
         setSearchResults(filteredAppointments);
+        setSearchTerm('')
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === 'Enter' && event.target === document.activeElement) {
+            handleSearch();
+        }
     }
 
     return (
@@ -48,7 +58,6 @@ function ServiceHistoryList (props) {
 
             <div className="input-group">
                 <input 
-                name="search"
                 type="search" 
                 className="form-control rounded" 
                 placeholder="Search by VIN..." 
@@ -56,6 +65,7 @@ function ServiceHistoryList (props) {
                 aria-describedby="search-addon" 
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
+                onKeyPress={handleKeyPress}
             />
                 <button 
                 type="button" 

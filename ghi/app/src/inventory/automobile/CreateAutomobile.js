@@ -13,6 +13,7 @@ function CreateAutomobile() {
         initialFormData        
     )
     const [models, setModels] = useState([])
+    const [vinExists, setVinExists] = useState(false)
 
     const fetchData = async() => {
         const url = 'http://localhost:8100/api/models/';
@@ -20,7 +21,7 @@ function CreateAutomobile() {
         if (response.ok) {
             const data = await response.json();
             setModels(data.models)
-        }
+        } 
     }
 
     useEffect(() => {
@@ -44,6 +45,8 @@ function CreateAutomobile() {
             setFormData(
                 initialFormData
             )
+        } else {
+            setVinExists(true)
         }
     }
 
@@ -56,6 +59,7 @@ function CreateAutomobile() {
             ...formData,
             [inputName]: value
         })
+        setVinExists(false)
     }
 
     return (
@@ -63,6 +67,11 @@ function CreateAutomobile() {
             <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
                     <h1>Create an Automobile</h1>
+                    {vinExists && (
+                        <div className="alert alert-danger" role="alert">
+                            VIN already in system.
+                        </div> 
+                    )}
                     <form onSubmit={handleSubmit} id="create-automobile-form">
                         <div className="form-floating mb-3">
                             <input value={formData.color} onChange={handleFormChange} placeholder="Color" required type="text" name="color" id="color" className="form-control" />

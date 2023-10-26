@@ -4,6 +4,11 @@ import { useState, useEffect } from 'react';
 function AppointmentList (props) {
     const [appointments, setAppointments] = useState([]);
     const [vinArray, setVinArray] = useState([])
+    const [cancel, setCancel] = useState(false)
+    const [finish, setFinish] = useState(false)
+    const [notCanceled, setNotCanceled] = useState(false)
+    const [notFinished, setNotFinished] = useState(false)
+
 
     async function loadData() {
         const request = await fetch('http://localhost:8080/api/appointments/')
@@ -32,10 +37,16 @@ function AppointmentList (props) {
             method: "put"
         })
         if (response.ok) {
-            alert("Successfully Canceled!")
+            setCancel(true)
+            setTimeout(() => {
+                setCancel(false);
+            }, 1000)
             setAppointments(appointments.filter((appointments) => appointments.id != id))
         } else {
-            alert("Couldn't change status to Canceled. Try again.")
+            setNotCanceled(true)
+            setTimeout(() => {
+                setNotCanceled(false);
+            }, 1000)
         }
     }
 
@@ -44,16 +55,42 @@ function AppointmentList (props) {
             method: "put"
         })
         if (response.ok) {
-            alert("Successfully Finished!")
+            setFinish(true)
+            setTimeout(() => {
+                setFinish(false);
+            }, 1000)
             setAppointments(appointments.filter((appointments) => appointments.id != id))
         } else {
-            alert("Couldn't change status to Finished. Try again.")
+            setNotFinished(true)
+            setTimeout(() => {
+                setNotFinished(false);
+            }, 1000)
         }
     }
 
-    return(
+    return (
         <div>
             <h1>Service Appointments</h1>
+            {cancel && (
+                <div className="alert alert-success" role="alert">
+                    Successfully canceled appointment.
+                </div>
+            )}
+            {finish && (
+                <div className="alert alert-success" role="alert">
+                    Successfully set appointment status to "finished".
+                </div>
+            )}
+            {notCanceled && (
+                <div className="alert alert-danger" role="alert">
+                    Could not cancel appointment.
+                </div>
+            )}
+            {notFinished && (
+                <div className="alert alert-danger" role="alert">
+                    Could not set appointment status to "finished".
+                </div>
+            )}
             <table className="table table-striped">
                 <thead>
                     <tr>

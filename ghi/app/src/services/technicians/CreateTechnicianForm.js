@@ -11,6 +11,7 @@ function TechnicianForm() {
     const [formData, setFormData] = useState(
         initialFormData
         )
+    const [employeeIdExists, setEmployeeIdExists] = useState(false)
 
     const handleSubmit = async(event) => {
         event.preventDefault();
@@ -27,6 +28,8 @@ function TechnicianForm() {
             setFormData(
                 initialFormData
             )
+        } else {
+            setEmployeeIdExists(true)
         }
     }
 
@@ -38,6 +41,7 @@ function TechnicianForm() {
             ...formData,
             [inputName]: value
         })
+        setEmployeeIdExists(false)
     }
     
     return(
@@ -45,6 +49,11 @@ function TechnicianForm() {
             <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
                     <h1>Add a Technician</h1>
+                    {employeeIdExists && (
+                        <div className="alert alert-danger" role="alert">
+                            ID already exists.
+                        </div>
+                    )}
                     <form onSubmit={handleSubmit} id="create-technician-form">
                         <div className="form-floating mb-3">
                             <input value={formData.first_name} onChange={handleFormChange} placeholder="First name" required type="text" name="first_name" id="first_name" className="form-control" />
