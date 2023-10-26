@@ -55,7 +55,7 @@ function SalesForm() {
             setAutomobile(data.autos)
             setTimeout(() => {
                 isAvailable();
-            }, 1000)
+            }, 1100)
         }
     }
 
@@ -79,15 +79,17 @@ function SalesForm() {
 
 
     function isAvailable() {
-        soldVins.filter(vin => {
+        const final = soldVins.filter(vin => {
             for (const auto of autos) {
-                if (vin === auto.vin) {
+                if (vin !== auto.vin) {
                     console.log("sold", vin)
                 } else {
-                    console.log("for sale", auto.vin)
+                    console.log("unsold", auto.vin)
                 }
             }
         })
+        console.log(final)
+        return final
     }
 
 
@@ -134,7 +136,7 @@ function SalesForm() {
                 <div className="mb-3">
                     <select value={formData.vin} onChange={handleFormChange} required name="vin" id="vin" className="form-select">
                     <option value="">Automobile VIN</option>
-                    {autos?.map(auto => {
+                    {autos.map(auto => {
                         return (
                             <option key={auto.id} value={auto.id}>
                                 {(auto.vin)}
