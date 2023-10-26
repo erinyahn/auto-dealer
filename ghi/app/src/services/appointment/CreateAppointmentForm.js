@@ -33,15 +33,12 @@ function CreateAppointmentForm() {
         event.preventDefault();
 
         const initDateTime = new Date(date + 'T' + time)
-
         const utcYear = initDateTime.getUTCFullYear()
         const utcMonth = initDateTime.getUTCMonth() + 1 
         const utcDay = initDateTime.getUTCDate()
         const utcHours = initDateTime.getUTCHours()
         const utcMinutes = initDateTime.getUTCMinutes()
         const utcSeconds = initDateTime.getUTCSeconds()
-
-
         const dateTime = `${utcYear}-${String(utcMonth).padStart(2, '0')}-${String(utcDay).padStart(2, '0')}T${String(utcHours).padStart(2, '0')}:${String(utcMinutes).padStart(2, '0')}:${String(utcSeconds).padStart(2, '0')}+00:00`;
 
         const updatedFormData = {
