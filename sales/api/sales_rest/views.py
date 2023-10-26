@@ -37,7 +37,10 @@ class SaleEncoder(ModelEncoder):
     model = Sale
     properties = [
         "price",
-        "id"
+        "id",
+        "automobile",
+        "salesperson",
+        "customer",
     ]
     encoders = {
         "automobile": AutomobileVOEncoder(),
@@ -149,6 +152,8 @@ def api_list_sales(request, automobile_vo_vin=None):
             automobiles = content["automobile"]
             automobile = AutomobileVO.objects.get(vin=automobiles)
             content["automobile"] = automobile
+            automobile.sold = True
+            automobile.save()
             salespersons = content["salesperson"]
             salesperson = Salesperson.objects.get(employee_id=salespersons)
             content["salesperson"] = salesperson
