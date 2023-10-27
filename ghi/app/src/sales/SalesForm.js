@@ -94,7 +94,7 @@ function SalesForm() {
             setFormData(
                 initialFormData
             )
-        } 
+        }
     }
 
     const handleFormChange = (e) => {
