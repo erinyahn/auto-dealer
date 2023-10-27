@@ -7,7 +7,7 @@ Team:
 ## Design
 Bootstrap was used for CSS.
 Comprehensive view of the project can be seen in this diagram below:
-![Alt text](<Screenshot 2023-10-27 at 3.29.46 PM.png>)
+ ![Alt text](<Screenshot 2023-10-27 at 4.01.04 PM.png>)
 
 ## Service microservice
 ![Alt text](<Screenshot 2023-10-27 at 3.38.54 PM.png>)
