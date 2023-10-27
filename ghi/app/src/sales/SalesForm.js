@@ -80,6 +80,7 @@ function SalesForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
         const salesurl = 'http://localhost:8090/api/sales/';
         const fetchConfig = {
             method: "post",
@@ -88,7 +89,7 @@ function SalesForm() {
                 'Content-Type': 'application/json'
             },
         };
-        const response = await fetch(salesurl, fetchConfig);
+        const response = await fetch(salesurl, fetchConfig)
         if (response.ok) {
             setFormData(
                 initialFormData

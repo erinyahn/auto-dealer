@@ -28,6 +28,21 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
 
+          <Route path="manufacturers">
+            <Route path="" element={<ManufacturerList />} />
+            <Route path="create" element={<CreateManufacturer />} />
+          </Route>
+
+          <Route path="models">
+            <Route path="" element={<VehicleModelList />} />
+            <Route path="create" element={<CreateVehicleModel />} />
+          </Route>
+
+          <Route path="automobiles">
+            <Route path="" element={<AutomobileInventory />} />
+            <Route path="create" element={<CreateAutomobile />} />
+          </Route>
+
           <Route path="salespeople">
             <Route path="" element={<SalespersonList/>} />
             <Route path="new" element={<SalespersonForm/>} />
@@ -42,20 +57,6 @@ function App() {
             <Route path="" element={<SalesList/>} />
             <Route path="new" element={<SalesForm/>} />
             <Route path="history" element={<SalespersonHistory/>} />
-          </Route>
-          <Route path="manufacturers">
-            <Route path="" element={<ManufacturerList />} />
-            <Route path="create" element={<CreateManufacturer />} />
-          </Route>
-
-          <Route path="models">
-            <Route path="" element={<VehicleModelList />} />
-            <Route path="create" element={<CreateVehicleModel />} />
-          </Route>
-
-          <Route path="automobiles">
-            <Route path="" element={<AutomobileInventory />} />
-            <Route path="create" element={<CreateAutomobile />} />
           </Route>
 
           <Route path="technicians">
