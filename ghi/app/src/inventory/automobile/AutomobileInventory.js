@@ -8,7 +8,7 @@ function AutomobileInventory (props) {
     async function loadSales() {
         const urlSale = await fetch('http://localhost:8090/api/sales/')
         const responseSale = await urlSale.json();
-        const vins = responseSale.sales.map(sale => sale.vin)
+        const vins = responseSale.sales.map(sale => sale.automobile.vin)
         setVinsSales(vins)
     }
 
