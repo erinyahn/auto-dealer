@@ -14,6 +14,7 @@ class AutomobileVOEncoder(ModelEncoder):
         "sold"
     ]
 
+
 class SalespersonEncoder(ModelEncoder):
     model = Salesperson
     properties = [
@@ -22,6 +23,7 @@ class SalespersonEncoder(ModelEncoder):
         "employee_id",
         "id"
     ]
+
 
 class CustomerEncoder(ModelEncoder):
     model = Customer
@@ -32,6 +34,7 @@ class CustomerEncoder(ModelEncoder):
         "phone_number",
         "id"
     ]
+
 
 class SaleEncoder(ModelEncoder):
     model = Sale
@@ -184,7 +187,6 @@ def api_list_sales(request, automobile_vo_vin=None):
         )
 
 
-
 @require_http_methods(["DELETE", "GET"])
 def api_sale(request, pk):
     if request.method == "GET":
@@ -204,5 +206,7 @@ def api_sale(request, pk):
                 safe=False
             )
         except Sale.DoesNotExist:
-            return JsonResponse({"message": "Does not exist"},
-                                status=404)
+            return JsonResponse(
+                {"message": "Does not exist"},
+                status=404
+            )

@@ -13,7 +13,24 @@ function Nav() {
             <li className="nav-item">
               <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
             </li>
-            <li className="nav-item"></li>
+            <li className="nav-item">
+            <NavLink className="nav-link" aria-current="page" to="/manufacturers/">Manufacturers</NavLink>
+            </li>
+            <li className="nav-item">
+            <NavLink className="nav-link" aria-current="page" to="/manufacturers/create/">Create a Manufacturer</NavLink>
+            </li>
+            <li className="nav-item">
+            <NavLink className="nav-link" aria-current="page" to="/models/">Models</NavLink>
+            </li>
+            <li className="nav-item">
+            <NavLink className="nav-link" aria-current="page" to="/models/create/">Create a Model</NavLink>
+            </li>
+            <li className="nav-item">
+            <NavLink className="nav-link" aria-current="page" to="/automobiles/">Automobiles</NavLink>
+            </li>
+            <li className="nav-item">
+            <NavLink className="nav-link" aria-current="page" to="/automobiles/create/">Create an Automobile</NavLink>
+            </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/salespeople">Salespeople</NavLink>
             </li>
@@ -34,24 +51,6 @@ function Nav() {
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/sales/new">New Sale</NavLink>
-            </li>
-            <li className="nav-item">
-            <NavLink className="nav-link" aria-current="page" to="/manufacturers/">Manufacturers</NavLink>
-            </li>
-            <li className="nav-item">
-            <NavLink className="nav-link" aria-current="page" to="/manufacturers/create/">Create a Manufacturer</NavLink>
-            </li>
-            <li className="nav-item">
-            <NavLink className="nav-link" aria-current="page" to="/models/">Models</NavLink>
-            </li>
-            <li className="nav-item">
-            <NavLink className="nav-link" aria-current="page" to="/models/create/">Create a Model</NavLink>
-            </li>
-            <li className="nav-item">
-            <NavLink className="nav-link" aria-current="page" to="/automobiles/">Automobiles</NavLink>
-            </li>
-            <li className="nav-item">
-            <NavLink className="nav-link" aria-current="page" to="/automobiles/create/">Create an Automobile</NavLink>
             </li>
             <li className="nav-item">
             <NavLink className="nav-link" aria-current="page" to="/technicians/">Technicians</NavLink>

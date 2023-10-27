@@ -80,6 +80,7 @@ function SalesForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
         const salesurl = 'http://localhost:8090/api/sales/';
         const fetchConfig = {
             method: "post",
@@ -88,7 +89,7 @@ function SalesForm() {
                 'Content-Type': 'application/json'
             },
         };
-        const response = await fetch(salesurl, fetchConfig);
+        const response = await fetch(salesurl, fetchConfig)
         if (response.ok) {
             setFormData(
                 initialFormData
@@ -112,7 +113,7 @@ function SalesForm() {
                         <h1>Record a new sale</h1>
                         <form onSubmit={handleSubmit} id="create-customer-form">
                             <div className="mb-3">
-                                <select value={formData.automobile} onChange={handleFormChange} required name="automobile" id="vin" className="form-select">
+                                <select value={formData.automobile} onChange={handleFormChange} required name="automobile" id="automobile" className="form-select">
                                     <option value="">Automobile VIN</option>
                                     {availableVins().map(vin => {
                                         return (
@@ -128,7 +129,7 @@ function SalesForm() {
                                     <option value="">Salesperson</option>
                                     {salespeople.map(salesperson => {
                                         return (
-                                            <option key={salesperson.id} value={salesperson.id}>
+                                            <option key={salesperson.employee_id} value={salesperson.employee_id}>
                                 {`${salesperson.first_name} ${salesperson.last_name}`}
                             </option>
                         );
@@ -148,7 +149,7 @@ function SalesForm() {
                     </select>
                 </div>
                 <div className="form-floating mb-3">
-                    <input value={formData.price} onChange={handleFormChange} placeholder="price" required type="number" name="price" id="price" className="form-control" />
+                    <input value={formData.price} onChange={handleFormChange} placeholder="price" required type="text" name="price" id="price" className="form-control" />
                     <label htmlFor="price">Price</label>
                 </div>
                 <button className="btn btn-primary">Create</button>
