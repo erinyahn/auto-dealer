@@ -23,6 +23,7 @@ function SalespersonHistory() {
 
   useEffect(()=>{
     getData();
+    getSalespeople();
   }, [])
 
   function handleSelection(event) {
@@ -34,10 +35,10 @@ function SalespersonHistory() {
     <h1>Salesperson History</h1>
     <select className="form-select" aria-label="Default select example" onChange={handleSelection}>
         <option>Select Salesperson</option>
-        {sales.map(salesperson => {
+        {salespeople.map(salesperson => {
             return (
                 <option key={salesperson.id} value={salesperson.id}>
-                    { `${salesperson.salesperson.first_name} ${salesperson.salesperson.last_name}` }
+                    { `${salesperson.first_name} ${salesperson.last_name}` }
                 </option>
             )
         })}
