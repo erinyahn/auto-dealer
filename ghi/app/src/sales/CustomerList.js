@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+
 function CustomerList() {
   const [customers, setCustomers] = useState([])
 
@@ -12,11 +13,9 @@ function CustomerList() {
     }
   }
 
-
   useEffect(()=>{
     getData()
   }, [])
-
 
   return (
     <div>
