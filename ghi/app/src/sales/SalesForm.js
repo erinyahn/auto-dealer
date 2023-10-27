@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 function SalesForm() {
     const [formData, setFormData] = useState({
-        vin: '',
+        automobile: '',
         salesperson: '',
         customer: '',
         price: '',
@@ -55,7 +55,7 @@ function SalesForm() {
             setAutomobile(data.autos)
             setTimeout(() => {
                 isAvailable();
-            }, 1100)
+            }, 1900)
         }
     }
 
@@ -83,12 +83,14 @@ function SalesForm() {
             for (const auto of autos) {
                 if (vin !== auto.vin) {
                     console.log("sold", vin)
+                    return true
                 } else {
                     console.log("unsold", auto.vin)
+                    return false
                 }
             }
         })
-        console.log(final)
+        console.log("final", final)
         return final
     }
 
@@ -134,7 +136,7 @@ function SalesForm() {
                 <h1>Record a new sale</h1>
                 <form onSubmit={handleSubmit} id="create-customer-form">
                 <div className="mb-3">
-                    <select value={formData.vin} onChange={handleFormChange} required name="vin" id="vin" className="form-select">
+                    <select value={formData.automobile} onChange={handleFormChange} required name="automobile" id="vin" className="form-select">
                     <option value="">Automobile VIN</option>
                     {autos.map(auto => {
                         return (
