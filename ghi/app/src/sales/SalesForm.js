@@ -92,8 +92,8 @@ function SalesForm() {
         if (response.ok) {
             setFormData(
                 initialFormData
-            );
-        }
+            )
+        } 
     }
 
     console.log(formData)
