@@ -5,10 +5,13 @@ Team:
 * Erin Ahn: Service Microservices
 
 ## Design
-BOOTSTRAP
-
+Bootstrap was used for CSS.
+Comprehensive view of the project can be seen in this diagram below:
 ![Alt text](<Screenshot 2023-10-27 at 3.29.46 PM.png>)
+
 ## Service microservice
+![Alt text](<Screenshot 2023-10-27 at 3.38.54 PM.png>)
+The table above shows all the available methods for the service microservice. In the service microservice, there are three models (Technician, Appointment, and AutomobileVO). The properties of the Technician Model is first name of the technician, last name of the technician, and the employee ID (which is a unique property, meaning there cannot be duplicates). In the Appointment Model, the properties are as follows: date time, reason, status (which is limited to 3 choices - created, canceled, and finished), VIN, customer, and technician (foreign key from Technician model with one technician to many appointments). The Automobile VO Model uses the Service Poller to obtain the vin property from the Automobile Model from the Inventory Microservice. 
 
 
 ## Sales microservice
