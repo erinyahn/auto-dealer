@@ -6,7 +6,6 @@ from django.views.decorators.http import require_http_methods
 import json
 
 
-# Create your views here.
 class AutomobileVOEncoder(ModelEncoder):
     model = AutomobileVO
     properties = [
