@@ -33,7 +33,7 @@ function CustomerList() {
       <tbody>
         {customers.map(customers => {
           return (
-            <tr key={customers.href}>
+            <tr key={customers.id}>
               <td>{ customers.first_name }</td>
               <td>{ customers.last_name }</td>
               <td>{ customers.phone_number }</td>
