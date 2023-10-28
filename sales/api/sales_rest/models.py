@@ -19,6 +19,7 @@ class Customer(models.Model):
     address = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=200)
 
+
 class Sale(models.Model):
     price = models.CharField(max_length=200)
     automobile = models.ForeignKey(
@@ -36,6 +37,5 @@ class Sale(models.Model):
         related_name="sales",
         on_delete=models.CASCADE
     )
-
     def get_api_url(self):
         return reverse("api_vehicle_model", kwargs={"pk": self.id})

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-
 const initialFormData = {
     date_time: '',
     reason: '',

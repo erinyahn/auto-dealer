@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-
 function AppointmentList (props) {
     const [appointments, setAppointments] = useState([]);
     const [vinArray, setVinArray] = useState([])
@@ -8,7 +7,6 @@ function AppointmentList (props) {
     const [finish, setFinish] = useState(false)
     const [notCanceled, setNotCanceled] = useState(false)
     const [notFinished, setNotFinished] = useState(false)
-
 
     async function loadData() {
         const request = await fetch('http://localhost:8080/api/appointments/')

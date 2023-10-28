@@ -18,16 +18,13 @@ function CustomerForm() {
             setcustomers(data.customers)
         }
     }
-
     useEffect(() => {
         fetchData();
     }, []);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         const customersurl = 'http://localhost:8090/api/customers/';
-
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(formData),
@@ -35,9 +32,7 @@ function CustomerForm() {
                 'Content-Type': 'application/json'
             },
         };
-
         const response = await fetch(customersurl, fetchConfig);
-
         if (response.ok) {
             setFormData({
                 first_name: '',

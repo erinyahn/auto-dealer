@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 const initialFormData = {
     first_name: '',
     last_name: '',

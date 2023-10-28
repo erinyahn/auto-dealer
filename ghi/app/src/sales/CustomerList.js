@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 
-
 function CustomerList() {
   const [customers, setCustomers] = useState([])
 

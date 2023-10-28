@@ -11,14 +11,9 @@ function SalesList() {
     }
   }
 
-
-
   useEffect(()=>{
     getData();
   }, [])
-
-
-
 
   return (
     <div>
