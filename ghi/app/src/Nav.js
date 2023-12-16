@@ -2,6 +2,13 @@ import { NavLink } from 'react-router-dom';
 import logoImage from "./imgs/logo.png";
 
 function Nav() {
+    const closeNavbar = () => {
+    const navbarToggler = document.querySelector(".navbar-toggler");
+    if (navbarToggler && navbarToggler.getAttribute("aria-expanded") === "true") {
+      navbarToggler.click();
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -27,7 +34,7 @@ function Nav() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{ flexWrap: "wrap" }}>
             <li className="nav-item">
-              <NavLink className="nav-link active" aria-current="page" to="/">
+              <NavLink className="nav-link active" aria-current="page" to="/" onClick={closeNavbar}>
                 Home
               </NavLink>
             </li>
@@ -44,12 +51,12 @@ function Nav() {
               </a>
               <ul className="dropdown-menu" aria-labelledby="manufacturersDropdown">
                 <li>
-                  <NavLink className="dropdown-item" to="/manufacturers/">
+                  <NavLink className="dropdown-item" to="/manufacturers/" onClick={closeNavbar}>
                     All Manufacturers
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/manufacturers/create/">
+                  <NavLink className="dropdown-item" to="/manufacturers/create/" onClick={closeNavbar}>
                     Create a Manufacturer
                   </NavLink>
                 </li>
@@ -68,12 +75,12 @@ function Nav() {
               </a>
               <ul className="dropdown-menu" aria-labelledby="modelsDropdown">
                 <li>
-                  <NavLink className="dropdown-item" to="/models/">
+                  <NavLink className="dropdown-item" to="/models/" onClick={closeNavbar}>
                     All Models
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/models/create/">
+                  <NavLink className="dropdown-item" to="/models/create/" onClick={closeNavbar}>
                     Create a Model
                   </NavLink>
                 </li>
@@ -92,12 +99,12 @@ function Nav() {
               </a>
               <ul className="dropdown-menu" aria-labelledby="automobilesDropdown">
                 <li>
-                  <NavLink className="dropdown-item" to="/automobiles/">
+                  <NavLink className="dropdown-item" to="/automobiles/" onClick={closeNavbar}>
                     All Automobiles
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/automobiles/create/">
+                  <NavLink className="dropdown-item" to="/automobiles/create/" onClick={closeNavbar}>
                     Create an Automobile
                   </NavLink>
                 </li>
@@ -116,17 +123,17 @@ function Nav() {
               </a>
               <ul className="dropdown-menu" aria-labelledby="salespeopleDropdown">
                 <li>
-                  <NavLink className="dropdown-item" to="/salespeople">
+                  <NavLink className="dropdown-item" to="/salespeople" onClick={closeNavbar}>
                     All Salespeople
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/salespeople/new">
+                  <NavLink className="dropdown-item" to="/salespeople/new" onClick={closeNavbar}>
                     Add Salesperson
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/sales/history">
+                  <NavLink className="dropdown-item" to="/sales/history" onClick={closeNavbar}>
                     Salesperson History
                   </NavLink>
                 </li>
@@ -145,12 +152,12 @@ function Nav() {
               </a>
               <ul className="dropdown-menu" aria-labelledby="customersDropdown">
                 <li>
-                  <NavLink className="dropdown-item" to="/customers">
+                  <NavLink className="dropdown-item" to="/customers" onClick={closeNavbar}>
                     All Customers
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/customers/new">
+                  <NavLink className="dropdown-item" to="/customers/new" onClick={closeNavbar}>
                     Add Customer
                   </NavLink>
                 </li>
@@ -169,12 +176,12 @@ function Nav() {
               </a>
               <ul className="dropdown-menu" aria-labelledby="salesDropdown">
                 <li>
-                  <NavLink className="dropdown-item" to="/sales">
+                  <NavLink className="dropdown-item" to="/sales" onClick={closeNavbar}>
                     All Sales
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/sales/new">
+                  <NavLink className="dropdown-item" to="/sales/new" onClick={closeNavbar}>
                     New Sale
                   </NavLink>
                 </li>
@@ -193,12 +200,12 @@ function Nav() {
               </a>
               <ul className="dropdown-menu" aria-labelledby="techniciansDropdown">
                 <li>
-                  <NavLink className="dropdown-item" to="/technicians/">
+                  <NavLink className="dropdown-item" to="/technicians/" onClick={closeNavbar}>
                     All Technicians
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/technicians/new/">
+                  <NavLink className="dropdown-item" to="/technicians/new/" onClick={closeNavbar}>
                     Add a Technician
                   </NavLink>
                 </li>
@@ -217,17 +224,17 @@ function Nav() {
               </a>
               <ul className="dropdown-menu" aria-labelledby="appointmentsDropdown">
                 <li>
-                  <NavLink className="dropdown-item" to="/appointment/">
+                  <NavLink className="dropdown-item" to="/appointment/" onClick={closeNavbar}>
                     All Service Appointments
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/appointment/new/">
+                  <NavLink className="dropdown-item" to="/appointment/new/" onClick={closeNavbar}>
                     Create a Service Appointment
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink className="dropdown-item" to="/history/service/">
+                  <NavLink className="dropdown-item" to="/history/service/" onClick={closeNavbar}>
                     Service History
                   </NavLink>
                 </li>
