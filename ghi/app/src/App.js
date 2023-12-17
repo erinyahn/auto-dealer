@@ -19,12 +19,14 @@ import VehicleModelList from './inventory/vehicle/VehicleModelList'
 import CreateVehicleModel from './inventory/vehicle/CreateVehicleModel'
 import AutomobileInventory from './inventory/automobile/AutomobileInventory'
 import CreateAutomobile from './inventory/automobile/CreateAutomobile'
+import './index.css'
 
 function App() {
   return (
     <BrowserRouter>
+    <div className = "mainpage">
       <Nav />
-      <div className="container">
+      <div className="mainbody">
         <Routes>
           <Route path="/" element={<MainPage />} />
 
@@ -74,6 +76,7 @@ function App() {
           </Route>
 
         </Routes>
+      </div>
       </div>
     </BrowserRouter>
   );
