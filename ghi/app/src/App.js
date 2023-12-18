@@ -19,6 +19,7 @@ import VehicleModelList from './inventory/vehicle/VehicleModelList'
 import CreateVehicleModel from './inventory/vehicle/CreateVehicleModel'
 import AutomobileInventory from './inventory/automobile/AutomobileInventory'
 import CreateAutomobile from './inventory/automobile/CreateAutomobile'
+import Footer from './Footer'
 import './index.css'
 
 function App() {
@@ -77,6 +78,7 @@ function App() {
 
         </Routes>
       </div>
+      <Footer />
       </div>
     </BrowserRouter>
   );
